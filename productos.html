@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Mascotic | Productos</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon"> <!-- cambio en imagen que sale junto a title-->
+  <link href="assets/img/apple-touch-icon.png.png" rel="apple-touch-icon"> <!-- cambio en imagen, este es cuando se guarda en enlace en el escritorio-->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Bethany - v2.2.1
+  * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container">
+      <div class="header-container d-flex align-items-center">
+        <div class="logo mr-auto">
+          <h1 class="text-light"><a href="index.html"><img src="assets/img/isologo.png"></a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        </div>
+
+        <nav class="nav-menu d-none d-lg-block">
+          <ul>
+            <li class="active"><a href="index.html"><b>Inicio</b></a></li>
+            <li><a href="quienessomos.html"><b>Quiénes somos</b></a></li>
+            <li><a href="services.html"><b>Servicios</b></a></li>
+            <li><a href="index.html #portfolio"><b>Productos</b></a></li>
+            <li><a href="index.html #ofertas-details"><b>Ofertas</b></a></li>           
+            <li><a href="index.html #contact"><b>Contáctenos</b></a></li>           
+          </ul>
+        </nav><!-- .nav-menu -->
+      </div><!-- End Header Container -->
+    </div>
+  </header><!-- End Header --> 
+
+  <section id="portfolio" class="portfolio">
+    <div class="container mt-5">
+
+      <div class="section-title" data-aos="fade-left">
+        <h2>Productos para sus queridas mascotas</h2>
+        <p>En <b>Mascotic</b> encontrará todos los artículos que su mascota necesita y también para que sus peluditos se sientan consentidos.</p>
+      </div>
+
+  </section>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script>
+
+    
+      window.onload = function () {
+          // Variables
+          const baseDeDatos = [
+              {
+                  id: 1,
+                  nombre: 'Arenero',
+                  precio: 70000,
+                  imagen: 'assets/img/portfolio/arenero.jpg'
+              },
+              {
+                  id: 2,
+                  nombre: 'Felix',
+                  precio: 7800,
+                  imagen: 'assets/img/portfolio/bocadillosparagatos.jpg'
+              },
+              {
+                  id: 3,
+                  nombre: 'Chunky',
+                  precio: 27000,
+                  imagen: 'assets/img/portfolio/chunckyparaperro.jpg'
+              },
+              {
+                  id: 4,
+                  nombre: 'Collares',
+                  precio: 30000,
+                  imagen: 'assets/img/portfolio/collares.jpg'
+              },
+              {
+                  id: 5,
+                  nombre: 'Correas',
+                  precio: 12000,
+                  imagen: 'assets/img/portfolio/correas.jpg'
+              },
+              {
+                  id: 6,
+                  nombre: 'Dog Chow',
+                  precio: 8500,
+                  imagen: 'assets/img/portfolio/dogchow.jpg'
+              },
+              {
+                  id: 7,
+                  nombre: 'Guante',
+                  precio: 8500,
+                  imagen: 'assets/img/portfolio/guante.jpg'
+              },
+              {
+                  id: 8,
+                  nombre: 'Whiskas',
+                  precio: 47000,
+                  imagen: 'assets/img/portfolio/whiskas.jpg'
+              }
+
+
+          ];
+
+          let carrito = [];
+          let total = 0;
+          const DOMitems = document.querySelector('#items');
+          const DOMcarrito = document.querySelector('#carrito');
+          const DOMtotal = document.querySelector('#total');
+          const DOMbotonVaciar = document.querySelector('#boton-vaciar');
+          const miLocalStorage = window.localStorage;
+
+          // Funciones
+
+          /**
+          * Dibuja todos los productos a partir de la base de datos. No confundir con el carrito
+          */
+          function renderizarProductos() {
+              baseDeDatos.forEach((info) => {
+                  // Estructura
+                  const miNodo = document.createElement('div');
+                  miNodo.classList.add('card', 'col-sm-4');
+                  // Body
+                  const miNodoCardBody = document.createElement('div');
+                  miNodoCardBody.classList.add('card-body');
+                  // Titulo
+                  const miNodoTitle = document.createElement('h5');
+                  miNodoTitle.classList.add('card-title');
+                  miNodoTitle.textContent = info.nombre;
+                  // Imagen
+                  const miNodoImagen = document.createElement('img');
+                  miNodoImagen.classList.add('img-fluid');
+                  miNodoImagen.setAttribute('src', info.imagen);
+                  // Precio
+                  const miNodoPrecio = document.createElement('p');
+                  miNodoPrecio.classList.add('card-text');
+                  miNodoPrecio.textContent = ' $ '+ info.precio ;
+                  // Boton 
+                  const miNodoBoton = document.createElement('button');
+                  miNodoBoton.classList.add('btn', 'btn-success');
+                  miNodoBoton.textContent = '+';
+                  miNodoBoton.setAttribute('marcador', info.id);
+                  miNodoBoton.addEventListener('click', anyadirProductoAlCarrito);
+                  // Insertamos
+                  miNodoCardBody.appendChild(miNodoImagen);
+                  miNodoCardBody.appendChild(miNodoTitle);
+                  miNodoCardBody.appendChild(miNodoPrecio);
+                  miNodoCardBody.appendChild(miNodoBoton);
+                  miNodo.appendChild(miNodoCardBody);
+                  DOMitems.appendChild(miNodo);
+              });
+          }
+
+          /**
+          * Evento para añadir un producto al carrito de la compra
+          */
+          function anyadirProductoAlCarrito(evento) {
+              // Anyadimos el Nodo a nuestro carrito
+              carrito.push(evento.target.getAttribute('marcador'))
+              // Calculo el total
+              calcularTotal();
+              // Actualizamos el carrito 
+              renderizarCarrito();
+              // Actualizamos el LocalStorage
+              guardarCarritoEnLocalStorage();
+          }
+
+          /**
+          * Dibuja todos los productos guardados en el carrito
+          */
+          function renderizarCarrito() {
+              // Vaciamos todo el html
+              DOMcarrito.textContent = '';
+              // Quitamos los duplicados
+              const carritoSinDuplicados = [...new Set(carrito)];
+              // Generamos los Nodos a partir de carrito
+              carritoSinDuplicados.forEach((item) => {
+                  // Obtenemos el item que necesitamos de la variable base de datos
+                  const miItem = baseDeDatos.filter((itemBaseDatos) => {
+                      // ¿Coincide las id? Solo puede existir un caso
+                      return itemBaseDatos.id === parseInt(item);
+                  });
+                  // Cuenta el número de veces que se repite el producto
+                  const numeroUnidadesItem = carrito.reduce((total, itemId) => {
+                      // ¿Coincide las id? Incremento el contador, en caso contrario no mantengo
+                      return itemId === item ? total += 1 : total;
+                  }, 0);
+                  // Creamos el nodo del item del carrito
+                  const miNodo = document.createElement('li');
+                  miNodo.classList.add('list-group-item', 'text-left', 'mx-2');
+                  miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}`;
+                  // Boton de borrar
+                  const miBoton = document.createElement('button');
+                  miBoton.classList.add('btn', 'btn-danger', 'mx-5');
+                  miBoton.textContent = 'X';
+                  miBoton.style.marginLeft = '1rem';
+                  miBoton.dataset.item = item;
+                  miBoton.addEventListener('click', borrarItemCarrito);
+                  // Mezclamos nodos
+                  miNodo.appendChild(miBoton);
+                  DOMcarrito.appendChild(miNodo);
+              });
+          }
+
+          /**
+          * Evento para borrar un elemento del carrito
+          */
+          function borrarItemCarrito(evento) {
+              // Obtenemos el producto ID que hay en el boton pulsado
+              const id = evento.target.dataset.item;
+              // Borramos todos los productos
+              carrito = carrito.filter((carritoId) => {
+                  return carritoId !== id;
+              });
+              // volvemos a renderizar
+              renderizarCarrito();
+              // Calculamos de nuevo el precio
+              calcularTotal();
+              // Actualizamos el LocalStorage
+              guardarCarritoEnLocalStorage();
+
+          }
+
+          /**
+          * Calcula el precio total teniendo en cuenta los productos repetidos
+          */
+          function calcularTotal() {
+              // Limpiamos precio anterior
+              total = 0;
+              // Recorremos el array del carrito
+              carrito.forEach((item) => {
+                  // De cada elemento obtenemos su precio
+                  const miItem = baseDeDatos.filter((itemBaseDatos) => {
+                      return itemBaseDatos.id === parseInt(item);
+                  });
+                  total = total + miItem[0].precio;
+              });
+              // Renderizamos el precio en el HTML
+              DOMtotal.textContent = total.toFixed(2);
+          }
+
+          /**
+          * Varia el carrito y vuelve a dibujarlo
+          */
+          function vaciarCarrito() {
+              // Limpiamos los productos guardados
+              carrito = [];
+              // Renderizamos los cambios
+              renderizarCarrito();
+              calcularTotal();
+              // Borra LocalStorage
+              localStorage.clear();
+
+          }
+
+          function guardarCarritoEnLocalStorage () {
+              miLocalStorage.setItem('carrito', JSON.stringify(carrito));
+          }
+
+          function cargarCarritoDeLocalStorage () {
+              // ¿Existe un carrito previo guardado en LocalStorage?
+              if (miLocalStorage.getItem('carrito') !== null) {
+                  // Carga la información
+                  carrito = JSON.parse(miLocalStorage.getItem('carrito'));
+              }
+          }
+
+          // Eventos
+          DOMbotonVaciar.addEventListener('click', vaciarCarrito);
+
+          // Inicio
+          cargarCarritoDeLocalStorage();
+          renderizarProductos();
+          calcularTotal();
+          renderizarCarrito();
+      }
+
+  </script>
+</head>
+<body>
+  <div class="container ml-5">
+      <div class="row">
+          <!-- Elementos generados a partir del JSON -->
+          <main id="items" class="col-sm-8 row"></main>
+          <!-- Carrito -->
+          <aside class="col-sm-4">
+              <h2>Carrito</h2>
+              <!-- Elementos del carrito -->
+              <ul id="carrito" class="list-group"></ul>
+              <hr>
+              <!-- Precio total -->
+              <p class="text-right">Total: $ <span id="total"></span></p>
+              <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+              <button id="boton-pagar" class="btn btn-success"><a href="confirmacionpedido.html"><img src="assets/img/portfolio/carshop2.png" width="32px" height="auto"></a></button> <!--agregue boton pagar pero no se como darle mas funciones solo redireccione y redirecciona incluso estando vacio-->
+          </aside>
+      </div>
+  </div>
+
+  <section>
+    
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3><b>Mascotic</b></h3>
+            <p>
+              Calle 17 # 14 - 25 <br>
+              Zipaquirá - Cundinamarca<br>
+              Colombia <br><br>
+              <strong>Celular:</strong> 314 376 8135 / 320 834 2487<br>
+              <strong>Email:</strong> mascotic850@gmail.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Enlaces útiles</h4>
+            <ul>              
+              <li><i class="bx bx-chevron-right"></i> <a href="quienes somos.html">Quiénes somos</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="productos.html">Productos</a></li><!--toca definir las referencias-->
+              <li><i class="bx bx-chevron-right"></i> <a href="services.html">Servicios</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html #ofertas-details">Ofertas</a></li>
+              
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Otros Servicios</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Guarderia</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Servicio Veterinario</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Esterilización</a></li> <!--toca definir las referencias hastas aqui-->
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Suscríbase</h4>
+            <p>Para que esté actualizad@ con nuestras ofertas y campañas al cuidado de su mascota.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Suscribirse">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="mr-md-auto text-center text-md-left">
+        <div class="copyright">
+          &copy;<strong><span>Mascotic</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/ -->
+          Designed by <a>Web-Dev.rolX</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">        
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>  <!--elimine los demas iconos, ya que solo tiene una red social activa-->
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
